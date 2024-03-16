@@ -21,5 +21,11 @@ test:
   database: storage/test.sqlite3
 
 production:
-  <<: *default
-  database: storage/production.sqlite3
+  adapter: postgresql
+  prepared_statements: false
+  advisory_locks: false
+  database: blog
+  pool: 5
+  host: 
+  username: <%= Rails.application.credentials.pg.username %>
+  password: <%= Rails.application.credentials.pg.password %>
